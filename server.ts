@@ -3,7 +3,6 @@ import { createServer as createViteServer } from 'vite';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { GoogleGenAI } from '@google/genai';
 
 dotenv.config();
 
@@ -195,6 +194,7 @@ app.post('/api/youtube/lyrics', async (req, res) => {
     // Check if Gemini API is available
     if (process.env.GEMINI_API_KEY) {
       try {
+        const { GoogleGenAI } = await import('@google/genai');
         const ai = new GoogleGenAI();
         const prompt = `Generate a JSON array of synchronized lyrics for the song:
 Title: "${title || 'Track'}"
