@@ -1,0 +1,8 @@
+{
+  "name": "Remix Nx Ashu",
+  "description": "Minimalist music streaming player featuring a pure AMOLED black aesthetic, YouTube Music API integration, and synchronized word-by-word animated lyrics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

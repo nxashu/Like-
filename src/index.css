@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom subtle scrollbar for pure AMOLED */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.amoled-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.amoled-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.amoled-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+.amoled-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* Vinyl rotation animation */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 22s linear infinite;
+}
+
+.paused {
+  animation-play-state: paused;
+}
+
+/* Karaoke word-by-word progressive wipe effect */
+.lyric-word-fill {
+  background-clip: text;
+  -webkit-background-clip: text;
+  transition: color 0.15s ease-out;
+}
+
+/* Liquid Glass animations & utilities */
+@keyframes liquid-drift-1 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(30px, -40px) scale(1.15) rotate(15deg);
+  }
+  66% {
+    transform: translate(-25px, 35px) scale(0.95) rotate(-10deg);
+  }
+}
+
+@keyframes liquid-drift-2 {
+  0%, 100% {
+    transform: translate(0px, 0px) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(-35px, 25px) scale(1.1) rotate(-12deg);
+  }
+  66% {
+    transform: translate(30px, -30px) scale(0.9) rotate(18deg);
+  }
+}
+
+@keyframes liquid-pulse {
+  0%, 100% {
+    opacity: 0.45;
+    filter: blur(48px);
+  }
+  50% {
+    opacity: 0.7;
+    filter: blur(64px);
+  }
+}
+
+@keyframes liquid-wave {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-liquid-1 {
+  animation: liquid-drift-1 18s ease-in-out infinite;
+}
+
+.animate-liquid-2 {
+  animation: liquid-drift-2 22s ease-in-out infinite;
+}
+
+.animate-liquid-pulse {
+  animation: liquid-pulse 7s ease-in-out infinite;
+}
+
+/* Liquid Glass Surfaces */
+.liquid-glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-top-color: rgba(255, 255, 255, 0.28);
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+.liquid-glass-pill {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-top-color: rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.4);
+}
+
+.liquid-glass-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.04) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-top-color: rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 6px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.liquid-glass-btn:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.08) 100%);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow:
+    0 8px 25px rgba(0, 0, 0, 0.5),
+    inset 0 1px 2px rgba(255, 255, 255, 0.65);
+}
+
+.liquid-glass-btn:active {
+  transform: scale(0.96);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.02) 100%);
+}
+
+.liquid-glass-play-btn {
+  background: radial-gradient(circle at 35% 30%, #ffffff 0%, #f1f3f9 55%, #dce2ef 100%);
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(255, 255, 255, 0.3),
+    inset 0 2px 2px rgba(255, 255, 255, 0.95),
+    inset 0 -2px 3px rgba(180, 190, 210, 0.6);
+  position: relative;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.liquid-glass-play-btn:hover {
+  transform: scale(1.05);
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(255, 255, 255, 0.45),
+    inset 0 2px 2px rgba(255, 255, 255, 1);
+}
+
+.liquid-glass-play-btn:active {
+  transform: scale(0.95);
+}
+
